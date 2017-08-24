@@ -27,7 +27,7 @@ public class TestRNN {
 
         System.out.println("\n--------------------------------------------------TESTING PURPOSES---------------------------------------------------\n");
 
-        System.out.println("\n\nHere is the vector representation of letter a:");
+        System.out.println("Here is the vector representation of letter a:");
         for(int b = 0; b < 1; b++) {
             for(int a = 0; a < numberOfUniqueChars; a++) {
                 System.out.print(vectorizedChars[b][a] + ", ");
@@ -73,17 +73,17 @@ public class TestRNN {
         ArrayList<Inputs> vectorizedTargets = new ArrayList<>();
         char[] characters = reader.getCharacters();
 
+        System.out.println("\n--------------------------------------------------TESTING PURPOSES---------------------------------------------------\n");
         System.out.println("\nHere are the vector representation of the input characters: ");
 
         // Store the vectorized characters into the ArrayList inputs
         for (int a = 0; a < sequenceLength; a++) {
             vectorInput.setVectorCharacter(characters[a]);
             vectorizedChars = vectorInput.getVectorizedInputs();
-            for(int b = 0; b < numberOfUniqueChars; b++) {
-                System.out.print(vectorizedChars[a][b] + ", ");
-            }
+
             System.out.println("This is character: " + characters[a]);
             vectorizedInputs.add(vectorInput);
+            System.out.println(vectorInput);
         }
 
         System.out.println("\nHere are the vector representation of the target characters: ");
@@ -91,19 +91,18 @@ public class TestRNN {
         for (int a = 1; a < sequenceLength + 1; a++) {
             vectorInput.setVectorCharacter(characters[a]);
             vectorizedChars = vectorInput.getVectorizedInputs();
-            for(int b = 1; b < numberOfUniqueChars; b++) {
-                System.out.print(vectorizedChars[a][b] + ", ");
-            }
+
             System.out.println("This is character: " + characters[a]);
             vectorizedTargets.add(vectorInput);
+            System.out.println(vectorInput);
         }
+        System.out.println("\n--------------------------------------------------TESTING PURPOSES ENDS---------------------------------------------------\n");
 
         ForwardPass calculateLoss = new ForwardPass();
         double[][] previousHiddenState;
         previousHiddenState = paramLayers.getHiddenStatePrevious();
         double loss = 0;
         loss = calculateLoss.calculateLossFunction(vectorizedInputs, vectorizedTargets, previousHiddenState, wXh, wHh, wHy, bH, bY);
-
 
 
 

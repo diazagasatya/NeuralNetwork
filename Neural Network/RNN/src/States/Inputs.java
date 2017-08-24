@@ -69,5 +69,18 @@ public class Inputs {
         return vectorizedInput;
     }
 
+    /**
+     * Return a string representation of the vectorized inputs
+     * @return fullString                String representation
+     */
+    public String toString() {
+        String fullString = "";
+        for(int a = 0; a < 1; a++) {
+            for(int b = 0; b < uniqueCharacters.size(); b++) {
+                fullString += vectorizedInput[a][b] + ", ";
+            }
+        }
+        return fullString;
+    }
 
 }

@@ -19,7 +19,7 @@ public class ModelParameters {
         hiddenToOutput = this.randomizeHiddenToOutput(initialize,initialize);
         hiddenBias = this.initializeHiddenBias(initialize);
         outputBias = this.initializeOutputBias(initialize);
-        hiddenStatePrevious = this.initializeHiddenBias(initialize);
+        hiddenStatePrevious = this.initializePrevHiddenState(initialize);
     }
 
     /**
@@ -33,6 +33,7 @@ public class ModelParameters {
         hiddenToOutput = this.randomizeHiddenToOutput(uniqueChars,hiddenSize);
         hiddenBias = this.initializeHiddenBias(hiddenSize);
         outputBias = this.initializeOutputBias(uniqueChars);
+        hiddenStatePrevious = this.initializePrevHiddenState(hiddenSize);
     }
 
     /**
@@ -114,7 +115,7 @@ public class ModelParameters {
 
         for (int e = 0; e < hiddenSize; e++) {
             for (int f = 0; f < 1; f++) {
-                hiddenBias[e][f] = 0;
+                hiddenStatePrevious[e][f] = 0;
             }
         }
         return hiddenStatePrevious;

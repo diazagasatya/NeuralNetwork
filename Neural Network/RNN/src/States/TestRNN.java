@@ -28,8 +28,8 @@ public class TestRNN {
         System.out.println("\n--------------------------------------------------TESTING PURPOSES---------------------------------------------------\n");
 
         System.out.println("Here is the vector representation of letter a:");
-        for(int b = 0; b < 1; b++) {
-            for(int a = 0; a < numberOfUniqueChars; a++) {
+        for(int b = 0; b < numberOfUniqueChars; b++) {
+            for(int a = 0; a < 1; a++) {
                 System.out.print(vectorizedChars[b][a] + ", ");
             }
         }
@@ -38,8 +38,8 @@ public class TestRNN {
         vectorizedChars = current.getVectorizedInputs();
 
         System.out.println("\n\nHere is the vector representation of letter b:");
-        for(int b = 0; b < 1; b++) {
-            for(int a = 0; a < numberOfUniqueChars; a++) {
+        for(int b = 0; b < numberOfUniqueChars; b++) {
+            for(int a = 0; a < 1; a++) {
                 System.out.print(vectorizedChars[b][a] + ", ");
             }
         }
@@ -68,40 +68,38 @@ public class TestRNN {
 
         // DO THE FORWARD PASS -----------------------------------------------------------------------------------------
         Inputs vectorInput;
-        vectorInput= new Inputs(reader);
         ArrayList<Inputs> vectorizedInputs = new ArrayList<>();
         ArrayList<Inputs> vectorizedTargets = new ArrayList<>();
         char[] characters = reader.getCharacters();
 
-        System.out.println("\n--------------------------------------------------TESTING PURPOSES---------------------------------------------------\n");
+        System.out.println("\n--------------------------------------------------TESTING 2 PURPOSES---------------------------------------------------\n");
         System.out.println("\nHere are the vector representation of the input characters: ");
 
         // Store the vectorized characters into the ArrayList inputs
         for (int a = 0; a < sequenceLength; a++) {
+            vectorInput = new Inputs(reader);
             vectorInput.setVectorCharacter(characters[a]);
-            vectorizedChars = vectorInput.getVectorizedInputs();
-
             System.out.println("This is character: " + characters[a]);
             vectorizedInputs.add(vectorInput);
-            System.out.println(vectorInput);
         }
 
         System.out.println("\nHere are the vector representation of the target characters: ");
         // Store the vectorized characters Target into the ArrayList inputs
         for (int a = 1; a < sequenceLength + 1; a++) {
+            vectorInput = new Inputs(reader);
             vectorInput.setVectorCharacter(characters[a]);
-            vectorizedChars = vectorInput.getVectorizedInputs();
 
             System.out.println("This is character: " + characters[a]);
             vectorizedTargets.add(vectorInput);
-            System.out.println(vectorInput);
         }
-        System.out.println("\n--------------------------------------------------TESTING PURPOSES ENDS---------------------------------------------------\n");
+        System.out.println("\n--------------------------------------------------TESTING 2 PURPOSES ENDS---------------------------------------------------\n");
 
-        ForwardPass calculateLoss = new ForwardPass();
+        ForwardPass calculateLoss = new ForwardPass(reader);
         double[][] previousHiddenState;
         previousHiddenState = paramLayers.getHiddenStatePrevious();
         double loss = 0;
+
+        // Calculate the loss of the first sequence
         loss = calculateLoss.calculateLossFunction(vectorizedInputs, vectorizedTargets, previousHiddenState, wXh, wHh, wHy, bH, bY);
 
 

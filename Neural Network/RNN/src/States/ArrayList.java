@@ -45,6 +45,7 @@ public class ArrayList<Generic> implements Iterable<Generic>{
             tail = tail.getNext(); // Always set tail to be the end of linked list
             this.elementCount++;
         }
+
     }
 
     /**
@@ -232,10 +233,11 @@ public class ArrayList<Generic> implements Iterable<Generic>{
      * @return condition          True/False condition
      */
     public boolean indexValidity(int index) {
-
         if (index < 0) {
+            System.out.println("The index you are looking for below index 0");
             return false;
-        } else if (index >= elementCount) {
+        } else if (index > elementCount) {
+            System.out.println("The index you are looking for is empty");
             return false;
         }
         // Validity pass

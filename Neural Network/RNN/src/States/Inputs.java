@@ -26,9 +26,9 @@ public class Inputs {
      * @return vectorizedInputs     vectorizedInputs
      */
     public double[][] initializeArray() {
-        vectorizedInput = new double[1][uniqueCharacters.size()];
-        for(int a = 0; a < 1; a++) {
-            for(int b = 0; b < uniqueCharacters.size(); b++) {
+        vectorizedInput = new double[uniqueCharacters.size()][1];
+        for(int a = 0; a < uniqueCharacters.size(); a++) {
+            for(int b = 0; b < 1; b++) {
                 vectorizedInput[a][b] = 0;
             }
         }
@@ -45,8 +45,8 @@ public class Inputs {
         int hotIndex = 0;
 
         // Set every element to 0
-        for(int b = 0; b < 1; b++) {
-            for(int a = 0; a < uniqueCharacters.size(); a++) {
+        for(int b = 0; b < uniqueCharacters.size(); b++) {
+            for(int a = 0; a < 1; a++) {
                 vectorizedInput[b][a] = 0;
             }
         }
@@ -57,7 +57,7 @@ public class Inputs {
             }
         }
 
-        vectorizedInput[0][hotIndex] = 1;
+        vectorizedInput[hotIndex][0] = 1;
     }
 
 
@@ -75,8 +75,8 @@ public class Inputs {
      */
     public String toString() {
         String fullString = "";
-        for(int a = 0; a < 1; a++) {
-            for(int b = 0; b < uniqueCharacters.size(); b++) {
+        for(int a = 0; a < uniqueCharacters.size(); a++) {
+            for(int b = 0; b < 1; b++) {
                 fullString += vectorizedInput[a][b] + ", ";
             }
         }

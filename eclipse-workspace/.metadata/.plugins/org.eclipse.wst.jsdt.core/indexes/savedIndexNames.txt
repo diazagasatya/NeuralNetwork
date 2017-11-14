@@ -1,0 +1,10 @@
+INDEX VERSION 1.4+/Users/diazagasatya/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+2709104486.index
+2248500938.index
+2709104486.index
+3280207038.index
+3573746100.index
+1445270005.index
+3610367639.index
+4145283373.index
+4154284524.index
